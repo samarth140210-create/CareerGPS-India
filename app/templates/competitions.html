@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h1 class="mb-2">
+
+        Competitions
+
+    </h1>
+
+    <h4 class="text-primary mb-4">
+
+        {{ mission.career_name }}
+
+    </h4>
+
+    {% if competitions %}
+
+        {% for competition in competitions %}
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <div>
+
+                        <h4>
+
+                            {{ competition.title }}
+
+                        </h4>
+
+                        <p class="text-muted mb-1">
+
+                            {{ competition.organizer }}
+
+                        </p>
+
+                        <span class="badge bg-info">
+
+                            {{ competition.type }}
+
+                        </span>
+
+                    </div>
+
+                    <div>
+
+                        <a
+
+                            href="{{ competition.link }}"
+
+                            target="_blank"
+
+                            class="btn btn-primary"
+
+                        >
+
+                            Visit
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="alert alert-warning">
+
+            No competitions available for this career yet.
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

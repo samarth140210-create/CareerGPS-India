@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="card shadow border-0">
+
+        <div class="card-body p-5">
+
+            <h1 class="mb-4">
+
+                About CareerGPS India
+
+            </h1>
+
+            <p class="lead">
+
+                CareerGPS India is an AI-powered career guidance platform designed to help Indian students make informed career decisions through personalized recommendations, roadmaps, scholarships, competitions, and intelligent mentoring.
+
+            </p>
+
+            <hr>
+
+            <h3>🎯 Our Mission</h3>
+
+            <p>
+
+                We aim to bridge the gap between students and career opportunities by providing personalized guidance based on interests, skills, academic performance, and career goals.
+
+            </p>
+
+            <h3 class="mt-4">✨ Key Features</h3>
+
+            <ul>
+
+                <li>AI Career Assessment</li>
+
+                <li>Personalized Career Recommendations</li>
+
+                <li>Step-by-Step Career Roadmaps</li>
+
+                <li>Weekly Progress Tracking</li>
+
+                <li>AI Career Mentor</li>
+
+                <li>Scholarship Discovery</li>
+
+                <li>Competition Recommendations</li>
+
+                <li>Skill Gap Analysis</li>
+
+            </ul>
+
+            <h3 class="mt-4">🚀 Why CareerGPS ?</h3>
+
+            <p>
+
+                Instead of providing generic career advice, CareerGPS creates a personalized journey for every student. The platform tracks progress, recommends the next learning milestone, and provides AI-powered guidance based on each student's profile and career aspirations.
+
+            </p>
+
+            <div class="mt-5">
+
+                <a
+
+                    href="{{ url_for('main.home') }}"
+
+                    class="btn btn-primary"
+
+                >
+
+                    Back to Home
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

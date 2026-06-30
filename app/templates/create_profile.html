@@ -1,0 +1,703 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h1 class="mb-4">
+        Create Profile
+    </h1>
+
+    <form method="POST">
+
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+
+            {{ form.education_level.label(
+                class="form-label"
+            ) }}
+
+            {{ form.education_level(
+                class="form-select",
+                id="education_level"
+            ) }}
+
+        </div>
+
+        <div class="mb-3" id="class_container">
+
+            {{ form.current_class.label(
+                class="form-label"
+            ) }}
+
+            {{ form.current_class(
+                class="form-select"
+            ) }}
+
+        </div>
+
+        <div class="mb-3" id="stream_container">
+
+            {{ form.stream.label(
+                class="form-label"
+            ) }}
+
+            {{ form.stream(
+                class="form-select"
+            ) }}
+
+        </div>
+
+        <div class="mb-3" id="degree_container">
+            {{ form.degree.label(
+                class="form-label"
+            ) }}
+
+            {{ form.degree(
+                class="form-select"
+            ) }}
+
+        </div>
+
+        <div class="mb-3" id="percentage_container">
+
+            {{ form.twelfth_percentage.label(
+                class="form-label"
+            ) }}
+
+            {{ form.twelfth_percentage(
+                class="form-control"
+            ) }}
+
+        </div>
+
+        <div class="mb-4">
+
+            <label class="form-label fw-bold">
+                Choose Your Passions
+            </label>
+
+            <div class="passion-grid">
+
+                {% for subfield in form.passions %}
+
+                    <div class="passion-item">
+
+                        {{ subfield }}
+
+                        <label
+                            for="{{ subfield.id }}">
+                            {{ subfield.label.text }}
+                        </label>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <div
+            class="mb-4"
+            id="skills_container"
+            style="display:none;">
+
+            <label class="form-label fw-bold">
+                Choose The Skills You Know
+            </label>
+
+            <div
+                id="skills_grid"
+                class="passion-grid">
+            </div>
+
+        </div>
+
+        <div class="mb-3">
+
+            {{ form.dream_job.label(
+                class="form-label"
+            ) }}
+
+            {{ form.dream_job(
+                class="form-control"
+            ) }}
+
+        </div>
+
+        <div class="d-grid">
+
+            {{ form.submit(
+                class="btn btn-primary"
+            ) }}
+
+        </div>
+
+    </form>
+
+</div>
+
+<style>
+
+.passion-grid {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+}
+
+.passion-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+}
+
+</style>
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const education =
+            document.getElementById(
+                "education_level"
+            );
+
+        const classContainer =
+            document.getElementById(
+                "class_container"
+            );
+
+        const streamContainer =
+            document.getElementById(
+                "stream_container"
+            );
+
+        const degreeContainer =
+            document.getElementById(
+                "degree_container"
+            );
+
+        const percentageContainer =
+            document.getElementById(
+                "percentage_container"
+            );
+
+        function updateForm() {
+
+            const value =
+                education.value;
+
+            if (value === "School") {
+
+                classContainer.style.display =
+                    "block";
+
+                streamContainer.style.display =
+                    "block";
+
+                degreeContainer.style.display =
+                    "none";
+
+                percentageContainer.style.display =
+                    "none";
+            }
+
+            else {
+
+                classContainer.style.display =
+                    "none";
+
+                streamContainer.style.display =
+                    "none";
+
+                degreeContainer.style.display =
+                    "block";
+
+                percentageContainer.style.display =
+                    "block";
+            }
+
+        }
+
+        updateForm();
+
+        education.addEventListener(
+            "change",
+            updateForm
+        );
+
+    }
+);
+
+
+const passionSkills = {
+
+    "Programming": [
+        "Python",
+        "Java",
+        "C++",
+        "JavaScript",
+        "SQL",
+        "Git",
+        "Linux",
+        "Data Structures",
+        "Algorithms",
+        "Web Development"
+    ],
+
+    "Artificial Intelligence": [
+        "Python",
+        "Machine Learning",
+        "Deep Learning",
+        "TensorFlow",
+        "PyTorch",
+        "Prompt Engineering",
+        "Data Analysis",
+        "NLP",
+        "Computer Vision",
+        "AI Ethics"
+    ],
+
+    "Cybersecurity": [
+        "Networking",
+        "Linux",
+        "Ethical Hacking",
+        "Penetration Testing",
+        "Digital Forensics",
+        "SIEM",
+        "Risk Assessment",
+        "Cryptography",
+        "Incident Response"
+    ],
+
+    "Data Science": [
+        "Python",
+        "SQL",
+        "Statistics",
+        "Data Visualization",
+        "Power BI",
+        "Tableau",
+        "Machine Learning",
+        "Excel",
+        "Data Cleaning"
+    ],
+
+    "Law": [
+        "Legal Research",
+        "Contract Drafting",
+        "Legal Writing",
+        "Case Analysis",
+        "Negotiation",
+        "Public Speaking",
+        "Client Counseling",
+        "Litigation Basics",
+        "Critical Thinking",
+        "Constitutional Knowledge"
+    ],
+    
+    "Business": [
+        "Business Strategy",
+        "Market Analysis",
+        "Communication",
+        "Leadership",
+        "Negotiation",
+        "Problem Solving",
+        "Project Management"
+    ],
+
+    "Finance": [
+        "Accounting",
+        "Financial Analysis",
+        "Excel",
+        "Investment Analysis",
+        "Budgeting",
+        "Risk Management",
+        "Taxation"
+    ],
+
+    "Marketing": [
+        "SEO",
+        "Digital Marketing",
+        "Content Marketing",
+        "Social Media Marketing",
+        "Brand Management",
+        "Copywriting",
+        "Analytics"
+    ],
+
+    "Design": [
+        "Photoshop",
+        "Illustrator",
+        "Figma",
+        "UI Design",
+        "UX Design",
+        "Typography",
+        "Branding",
+        "Blender"
+    ],
+
+    "Writing": [
+        "Creative Writing",
+        "Copywriting",
+        "Editing",
+        "Storytelling",
+        "Research Writing",
+        "Content Creation",
+        "Proofreading"
+    ],
+
+    "Medicine": [
+        "Biology",
+        "Anatomy",
+        "Patient Care",
+        "Clinical Observation",
+        "Medical Terminology",
+        "Diagnosis Basics"
+    ],
+
+    "Engineering": [
+        "Problem Solving",
+        "CAD",
+        "Mathematics",
+        "Physics",
+        "Technical Drawing",
+        "Project Design"
+    ],
+
+    "Teaching": [
+        "Communication",
+        "Lesson Planning",
+        "Classroom Management",
+        "Public Speaking",
+        "Mentoring",
+        "Assessment Design"
+    ],
+
+    "Research": [
+        "Literature Review",
+        "Data Collection",
+        "Statistical Analysis",
+        "Academic Writing",
+        "Critical Thinking",
+        "Research Methodology"
+    ],
+
+    "Government Jobs": [
+        "General Knowledge",
+        "Current Affairs",
+        "Reasoning",
+        "Quantitative Aptitude",
+        "Essay Writing",
+        "Public Administration"
+    ],
+
+    "Entrepreneurship": [
+        "Leadership",
+        "Business Planning",
+        "Fundraising",
+        "Sales",
+        "Marketing",
+        "Negotiation",
+        "Networking"
+    ],
+
+    "Content Creation": [
+        "Video Editing",
+        "Script Writing",
+        "Storytelling",
+        "Social Media",
+        "Photography",
+        "Audience Engagement",
+        "Brand Building"
+    ],
+
+    "Gaming": [
+        "Game Design",
+        "Unity",
+        "Unreal Engine",
+        "Level Design",
+        "3D Modeling",
+        "C#",
+        "Testing"
+    ],
+
+    "Animation": [
+        "Blender",
+        "Maya",
+        "Rigging",
+        "Storyboarding",
+        "Character Animation",
+        "Motion Graphics"
+    ],
+
+    "Music": [
+        "Composition",
+        "Music Production",
+        "Mixing",
+        "Mastering",
+        "Instrument Skills",
+        "Sound Design"
+    ],
+
+    "Photography": [
+        "Camera Operation",
+        "Lighting",
+        "Photo Editing",
+        "Composition",
+        "Adobe Lightroom",
+        "Photoshop"
+    ],
+
+    "Sports": [
+        "Teamwork",
+        "Fitness Training",
+        "Strategy",
+        "Leadership",
+        "Discipline",
+        "Coaching"
+    ],
+
+    "Agriculture": [
+        "Crop Management",
+        "Soil Science",
+        "Irrigation",
+        "Farm Planning",
+        "Agricultural Technology"
+    ],
+
+    "Environment": [
+        "Sustainability",
+        "Environmental Analysis",
+        "Conservation",
+        "Climate Studies",
+        "Research"
+    ],
+
+    "Psychology": [
+        "Counseling",
+        "Behavior Analysis",
+        "Communication",
+        "Research",
+        "Empathy",
+        "Critical Thinking"
+    ],
+
+    "Robotics": [
+        "Python",
+        "C++",
+        "Electronics",
+        "Arduino",
+        "Embedded Systems",
+        "Automation",
+        "CAD"
+    ],
+
+    "Architecture": [
+        "AutoCAD",
+        "SketchUp",
+        "3D Modeling",
+        "Design Thinking",
+        "Building Planning",
+        "Rendering"
+    ],
+
+    "Civil Services": [
+        "Current Affairs",
+        "Essay Writing",
+        "Public Administration",
+        "Reasoning",
+        "Leadership",
+        "Policy Analysis"
+    ],
+
+    "Defence": [
+        "Leadership",
+        "Discipline",
+        "Physical Fitness",
+        "Strategic Thinking",
+        "Decision Making",
+        "Teamwork"
+    ],
+
+    "Aviation": [
+        "Navigation",
+        "Meteorology",
+        "Communication",
+        "Aircraft Systems",
+        "Decision Making",
+        "Safety Procedures"
+    ],
+
+    "UI/UX Design": [
+        "Figma",
+        "Wireframing",
+        "User Research",
+        "Prototyping",
+        "Design Systems",
+        "Usability Testing"
+    ],
+
+    "Film Making": [
+        "Video Editing",
+        "Cinematography",
+        "Storytelling",
+        "Directing",
+        "Script Writing",
+        "Production Planning"
+    ],
+
+    "Public Speaking": [
+        "Communication",
+        "Presentation Skills",
+        "Confidence",
+        "Persuasion",
+        "Storytelling",
+        "Leadership"
+    ],
+
+    "Politics": [
+        "Public Policy",
+        "Debating",
+        "Public Speaking",
+        "Leadership",
+        "Negotiation",
+        "Political Analysis"
+    ],
+
+    "Economics": [
+        "Microeconomics",
+        "Macroeconomics",
+        "Statistics",
+        "Data Analysis",
+        "Research",
+        "Financial Literacy"
+    ],
+
+    "Biotechnology": [
+        "Biology",
+        "Genetics",
+        "Laboratory Techniques",
+        "Research",
+        "Data Analysis",
+        "Bioinformatics"
+    ]
+
+};
+
+const skillsContainer =
+    document.getElementById(
+        "skills_container"
+    );
+
+const skillsGrid =
+    document.getElementById(
+        "skills_grid"
+    );
+
+function updateSkills() {
+
+    const selectedPassions =
+        Array.from(
+            document.querySelectorAll(
+                'input[name="passions"]:checked'
+            )
+        ).map(
+            checkbox => checkbox.value
+        );
+
+    let allSkills = [];
+
+    selectedPassions.forEach(
+        passion => {
+
+            if (
+                passionSkills[passion]
+            ) {
+
+                allSkills.push(
+                    ...passionSkills[
+                        passion
+                    ]
+                );
+
+            }
+
+        }
+    );
+
+    allSkills = [
+        ...new Set(allSkills)
+    ];
+
+    skillsGrid.innerHTML = "";
+
+    if (
+        allSkills.length === 0
+    ) {
+
+        skillsContainer.style.display =
+            "none";
+
+        return;
+
+    }
+
+    skillsContainer.style.display =
+        "block";
+
+    allSkills.forEach(
+        skill => {
+
+            skillsGrid.innerHTML += `
+
+            <div class="passion-item">
+            
+                <input
+                    type="checkbox"
+                    id="skill_${skill.replace(/\s+/g, '_')}"
+                    name="selected_skills"
+                    value="${skill}">
+            
+                <label
+                    for="skill_${skill.replace(/\s+/g, '_')}">
+                    ${skill}
+                </label>
+            
+            </div>
+
+            `;
+
+        }
+    );
+
+}
+
+document
+.querySelectorAll(
+    'input[name="passions"]'
+)
+.forEach(
+    checkbox => {
+
+        checkbox.addEventListener(
+            "change",
+            updateSkills
+        );
+
+    }
+);
+</script>
+
+{% endblock %}

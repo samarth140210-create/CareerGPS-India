@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="text-center mb-5">
+
+        <h1>
+            Assessment Results
+        </h1>
+
+        <p class="lead">
+            Your latest career assessment scores.
+        </p>
+
+    </div>
+
+    <div class="card shadow-sm">
+
+        <div class="card-body">
+
+            <table class="table">
+
+                <tbody>
+
+                    <tr>
+                        <th>Science</th>
+                        <td>{{ assessment.science_score }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Commerce</th>
+                        <td>{{ assessment.commerce_score }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Arts</th>
+                        <td>{{ assessment.arts_score }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Technology</th>
+                        <td>{{ assessment.technology_score }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Leadership</th>
+                        <td>{{ assessment.leadership_score }}</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <hr class="my-4">
+                    
+            <h3 class="mb-3">
+                Recommended Careers
+            </h3>
+            
+            {% if careers %}
+            
+                <div class="row">
+                
+                    {% for career in careers %}
+                
+                        <div class="col-md-4 mb-3">
+                        
+                            <div class="card h-100 shadow-sm">
+                            
+                                <div class="card-body">
+                                
+                                    <h5 class="card-title">
+                                        {{ career }}
+                                    </h5>
+                                
+                                    <p class="card-text">
+                                    
+                                        Based on your assessment,
+                                        this career aligns with
+                                        your interests and strengths.
+                                    
+                                    </p>
+                                
+                                </div>
+                            
+                            </div>
+                        
+                        </div>
+                    
+                    {% endfor %}
+                    
+                </div>
+            
+            {% endif %}
+
+            <div class="mt-4 text-center">
+
+                <a
+                    href="{{ url_for('main.assessment') }}"
+                    class="btn btn-outline-primary">
+
+                    Take Assessment Again
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

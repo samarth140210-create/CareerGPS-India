@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h1 class="mb-2">
+
+        Scholarships
+
+    </h1>
+
+    <h4 class="text-primary mb-4">
+
+        {{ mission.career_name }}
+
+    </h4>
+
+    {% if scholarships %}
+
+        {% for scholarship in scholarships %}
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-body">
+
+                <h4 class="card-title">
+
+                    {{ scholarship.title }}
+
+                </h4>
+
+                <hr>
+
+                <p>
+
+                    <strong>
+
+                        Provider:
+
+                    </strong>
+
+                    {{ scholarship.provider }}
+
+                </p>
+
+                <p>
+
+                    <strong>
+
+                        Scholarship Value:
+
+                    </strong>
+
+                    {{ scholarship.amount }}
+
+                </p>
+
+                <p>
+
+                    <strong>
+
+                        Deadline:
+
+                    </strong>
+
+                    {{ scholarship.deadline }}
+
+                </p>
+
+                <a
+
+                    href="{{ scholarship.link }}"
+
+                    target="_blank"
+
+                    class="btn btn-success"
+
+                >
+
+                    Apply Now
+
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="alert alert-warning">
+
+            No scholarships are available for this career yet.
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

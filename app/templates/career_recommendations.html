@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h1 class="mb-4">
+
+        Career Recommendations
+
+    </h1>
+
+    {% for recommendation in recommendations %}
+
+    <div class="card shadow-sm mb-4">
+
+        <div class="card-body">
+
+            <h3>
+
+                {{ recommendation.career }}
+
+            </h3>
+
+            <h5 class="text-success">
+
+                Match Score:
+                {{ recommendation.score }}%
+
+            </h5>
+
+            <hr>
+
+            <h5>
+
+                Why You Match
+
+            </h5>
+
+            {% for passion in recommendation.matched_passions %}
+
+                <span
+                    class="badge bg-primary me-2">
+
+                    {{ passion }}
+
+                </span>
+
+            {% endfor %}
+
+            <br><br>
+
+            {% for skill in recommendation.matched_skills %}
+
+                <span
+                    class="badge bg-success me-2">
+
+                    {{ skill }}
+
+                </span>
+
+            {% endfor %}
+
+            <hr>
+
+            <h5>
+
+                Missing Skills
+
+            </h5>
+
+            {% for skill in recommendation.missing_skills %}
+
+                <span
+                    class="badge bg-danger me-2">
+
+                    {{ skill }}
+
+                </span>
+
+            {% endfor %}
+
+            <hr>
+
+            <h5>
+
+                Roadmap
+
+            </h5>
+
+            <ol>
+
+                {% for step in recommendation.roadmap %}
+
+                    <li>
+
+                        {{ step }}
+
+                    </li>
+
+                {% endfor %}
+
+            </ol>
+
+            <hr>
+
+            <h5>
+
+                Salary Potential
+
+            </h5>
+
+            <p>
+
+                {{ recommendation.salary }}
+
+            </p>
+
+            {% if recommendation.is_current %}
+
+            <button class="btn btn-success" disabled>
+                Currently Selected
+            </button>
+
+            {% elif recommendation.is_completed %}
+
+            <button class="btn btn-secondary" disabled>
+                Completed
+            </button>
+
+            {% else %}
+
+            <a
+                href="{{ url_for('main.select_mission', career_name=recommendation.career) }}"
+                class="btn btn-primary">
+
+                Choose This Career
+
+            </a>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

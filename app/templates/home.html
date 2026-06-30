@@ -1,0 +1,259 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="hero-section text-center">
+
+    <h1 class="display-3 fw-bold">
+        CareerGPS India
+    </h1>
+
+    <p class="lead mt-3">
+        AI-Powered Career Guidance Platform for Indian Students
+    </p>
+
+    <p class="text-muted">
+        Discover careers, identify skill gaps, explore scholarships,
+        find competitions, and receive personalized guidance.
+    </p>
+
+    <div class="mt-4">
+
+        <a href="{{ url_for('main.create_profile') }}"
+           class="btn btn-primary btn-lg me-2">
+
+            Create Profile
+
+        </a>
+
+        <a
+
+        href="{{ url_for('main.about') }}"
+
+        class="btn btn-outline-primary btn-lg"
+
+    >
+
+        Learn More
+
+    </a>
+
+    </div>
+
+</section>
+
+<hr>
+
+<section class="mt-5">
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm h-100">
+
+                <a
+                    href="{{ url_for('main.create_profile') }}"
+                    class="text-decoration-none text-dark">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h5>
+
+                                Create Profile
+
+                            </h5>
+
+                            <p>
+
+                                Create profile and discover suitable career paths.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm h-100">
+
+                <a
+                    href="{{ url_for('main.career_recommendations') }}"
+                    class="text-decoration-none text-dark">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h5>
+
+                                AI Career Match
+
+                            </h5>
+
+                            <p>
+
+                                View AI-generated career recommendations.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm h-100">
+
+                <a
+                    href="{{ url_for('main.roadmap') }}"
+                    class="text-decoration-none text-dark">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h5>
+
+                                Personalized Roadmap
+
+                            </h5>
+
+                            <p>
+
+                                Track skills and milestones for your target career.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm h-100">
+
+                <a
+                    href="{{ url_for('main.scholarships') }}"
+                    class="text-decoration-none text-dark">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h5>
+
+                                Scholarships
+
+                            </h5>
+
+                            <p>
+
+                                Explore scholarship opportunities.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm h-100">
+
+                <a
+                    href="{{ url_for('main.competitions') }}"
+                    class="text-decoration-none text-dark">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h5>
+
+                                Competitions
+
+                            </h5>
+
+                            <p>
+
+                                Discover competitions and olympiads.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm h-100">
+
+                <a
+                    href="{{ url_for('main.mentor') }}"
+                    class="text-decoration-none text-dark">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h5>
+
+                                AI Mentor
+
+                            </h5>
+
+                            <p>
+
+                                Chat with your AI career mentor.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

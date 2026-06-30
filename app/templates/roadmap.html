@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+<h1 class="mb-4">
+
+{{ mission.career_name }} Roadmap
+
+</h1>
+
+{% for month in roadmap_state %}
+
+<div class="card shadow-sm mb-4">
+
+<div class="card-header bg-primary text-white">
+
+<h4 class="mb-0">
+
+{{ month.month }}
+
+</h4>
+
+</div>
+
+<div class="card-body">
+
+{% for week in month.weeks %}
+
+<div class="d-flex justify-content-between align-items-center border-bottom py-3">
+
+<strong>
+
+{{ week.week }}
+
+</strong>
+
+<div>
+
+{% if week.completed %}
+
+<span class="badge bg-success">
+
+Completed
+
+</span>
+
+<a
+
+href="{{ url_for(
+'main.week_page',
+month=month.month,
+week=week.week
+) }}"
+
+class="btn btn-success ms-2">
+
+View
+
+</a>
+
+{% elif week.unlocked %}
+
+<a
+
+href="{{ url_for(
+'main.week_page',
+month=month.month,
+week=week.week
+) }}"
+
+class="btn btn-primary">
+
+Open
+
+</a>
+
+{% else %}
+
+<button
+
+class="btn btn-secondary"
+
+disabled>
+
+Locked
+
+</button>
+
+{% endif %}
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

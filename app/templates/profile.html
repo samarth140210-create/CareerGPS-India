@@ -1,0 +1,276 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row">
+
+        <div class="col-lg-10 mx-auto">
+
+            <div class="card shadow-sm">
+
+                <div class="card-body p-4">
+
+                    <h1 class="mb-4">
+                        My Profile
+                    </h1>
+
+                    {% if profile %}
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+
+                            <div class="card mb-3">
+
+                                <div class="card-body">
+
+                                    <h5>
+                                        Education
+                                    </h5>
+
+                                    <hr>
+
+                                    <p>
+                                        <strong>
+                                            Level:
+                                        </strong>
+
+                                        {{ profile.education_level }}
+                                    </p>
+
+                                    {% if profile.current_class %}
+
+                                    <p>
+                                        <strong>
+                                            Class:
+                                        </strong>
+
+                                        {{ profile.current_class }}
+                                    </p>
+
+                                    {% endif %}
+
+                                    {% if profile.stream %}
+
+                                    <p>
+                                        <strong>
+                                            Stream:
+                                        </strong>
+
+                                        {{ profile.stream }}
+                                    </p>
+
+                                    {% endif %}
+
+                                    {% if profile.degree %}
+
+                                    <p>
+                                        <strong>
+                                            Degree:
+                                        </strong>
+
+                                        {{ profile.degree }}
+                                    </p>
+
+                                    {% endif %}
+
+                                    {% if profile.twelfth_percentage %}
+
+                                    <p>
+                                        <strong>
+                                            12th %:
+                                        </strong>
+
+                                        {{ profile.twelfth_percentage }}
+                                    </p>
+
+                                    {% endif %}
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div class="card mb-3">
+
+                                <div class="card-body">
+
+                                    <h5>
+                                        Dream Career
+                                    </h5>
+
+                                    <hr>
+
+                                    <p>
+
+                                        {{ profile.dream_job
+                                        or "Not specified" }}
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="card mb-3">
+
+                        <div class="card-body">
+
+                            <h5>
+                                Passions
+                            </h5>
+
+                            <hr>
+
+                            {% if profile.passions %}
+
+                            {% for passion in profile.passions.split(',') %}
+
+                            <span
+                                class="badge bg-primary me-2 mb-2">
+
+                                {{ passion }}
+
+                            </span>
+
+                            {% endfor %}
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                    <div class="card mb-3">
+
+                        <div class="card-body">
+
+                            <h5>
+                                Skills
+                            </h5>
+
+                            <hr>
+
+                            {% if profile.skills %}
+
+                            {% for skill in profile.skills.split(',') %}
+
+                            <span
+                                class="badge bg-success me-2 mb-2">
+
+                                {{ skill }}
+
+                            </span>
+
+                            {% endfor %}
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                    <div class="row g-2">
+
+                        <div class="col-12 col-md-auto">
+
+                            <a
+                                href="{{ url_for('main.create_profile') }}"
+                                class="btn btn-primary w-100">
+
+                                Update Profile
+
+                            </a>
+
+                        </div>
+
+                        <div class="col-12 col-md-auto">
+
+                            <a
+                                href="{{ url_for('main.career_recommendations') }}"
+                                class="btn btn-success w-100">
+
+                                View Career Recommendations
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    {% else %}
+
+                    <div class="alert alert-warning">
+
+                        No profile found.
+
+                    </div>
+
+                    <a
+                        href="{{ url_for('main.create_profile') }}"
+                        class="btn btn-primary">
+
+                        Create Profile
+
+                    </a>
+
+                    {% endif %}
+
+                </div>
+
+                <div class="card mt-4">
+
+                    <div class="card-body">
+
+                        <h4>
+
+                            Completed Missions
+
+                        </h4>
+
+                        <hr>
+
+                        {% if completed_missions %}
+
+                            {% for mission in completed_missions %}
+
+                                <p>
+
+                                    🏆 {{ mission.career_name }}
+
+                                </p>
+
+                            {% endfor %}
+
+                        {% else %}
+
+                            <p>
+
+                                No missions completed yet.
+
+                            </p>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

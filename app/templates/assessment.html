@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="text-center mb-5">
+
+        <h1>
+            Career Assessment
+        </h1>
+
+        <p class="lead">
+            Answer the questions below to help CareerGPS understand your interests.
+        </p>
+
+    </div>
+
+    <div class="card shadow-sm">
+
+        <div class="card-body">
+
+            <form method="POST">
+
+                {{ form.hidden_tag() }}
+
+                <div class="mb-3">
+
+                    {{ form.science_interest.label(
+                        class="form-label"
+                    ) }}
+
+                    {{ form.science_interest(
+                        class="form-select"
+                    ) }}
+
+                </div>
+
+                <div class="mb-3">
+
+                    {{ form.commerce_interest.label(
+                        class="form-label"
+                    ) }}
+
+                    {{ form.commerce_interest(
+                        class="form-select"
+                    ) }}
+
+                </div>
+
+                <div class="mb-3">
+
+                    {{ form.arts_interest.label(
+                        class="form-label"
+                    ) }}
+
+                    {{ form.arts_interest(
+                        class="form-select"
+                    ) }}
+
+                </div>
+
+                <div class="mb-3">
+
+                    {{ form.technology_interest.label(
+                        class="form-label"
+                    ) }}
+
+                    {{ form.technology_interest(
+                        class="form-select"
+                    ) }}
+
+                </div>
+
+                <div class="mb-3">
+
+                    {{ form.leadership_interest.label(
+                        class="form-label"
+                    ) }}
+
+                    {{ form.leadership_interest(
+                        class="form-select"
+                    ) }}
+
+                </div>
+
+                <div class="d-grid">
+
+                    {{ form.submit(
+                        class="btn btn-primary"
+                    ) }}
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
