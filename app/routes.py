@@ -120,6 +120,19 @@ def register():
         form=form
     )
 
+@main.route("/users")
+def users():
+
+    users = User.query.all()
+
+    for u in users:
+        print(
+            u.id,
+            u.email
+        )
+
+    return "Done"
+
 @main.route(
     "/login",
     methods=["GET", "POST"]
