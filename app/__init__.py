@@ -30,6 +30,9 @@ def create_app():
     # Initialize database
     db.init_app(app)
 
+    with app.app_context():
+        db.create_all()
+
     # Initialize login manager
     login_manager.init_app(app)
 
