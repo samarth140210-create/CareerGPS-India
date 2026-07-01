@@ -106,13 +106,15 @@ def register():
 
         db.session.commit()
 
+        login_user(user)
+
         flash(
             "Account created successfully.",
             "success"
         )
 
         return redirect(
-            url_for("main.home")
+            url_for("main.dashboard")
         )
 
     return render_template(
